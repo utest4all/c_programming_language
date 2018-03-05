@@ -2,13 +2,9 @@
 
 int main()
 {
-    int c;
+    printf("The value of EOF is %d\n\n", EOF);
 
-    c = getchar() != EOF;
-    if (c == 1)
-        printf("1");
-    else
-        printf("0");
-
+    putchar(EOF);
+    
     return 0;
 }
