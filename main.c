@@ -2,19 +2,17 @@
 
 int main()
 {
-    int c, flag;
-    
-    flag = 0;
+    int c;
 
-    while ((c = getchar()) != EOF){
-        if (c != ' '){
+    while ((c = getchar()) != EOF) {
+        if (c == '')
+            printf("");
+        else if (c == '\t')
+            printf("t");
+        else if (c == '\b')
+            printf("b");
+        else
             putchar(c);
-            flag = 0;
-        }
-        else if (flag == 0){
-            putchar(c);
-            flag = 1;
-        }
     }
     return 0;
 }
