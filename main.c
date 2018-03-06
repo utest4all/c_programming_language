@@ -1,18 +1,21 @@
 #include <stdio.h>
 
-int main()
-{
-    int c;
+#define IN   1 /*inside word*/
+#define OUT  0 /*outside word*/
 
-    while ((c = getchar()) != EOF) {
-        if (c == '')
-            printf("");
-        else if (c == '\t')
-            printf("t");
-        else if (c == '\b')
-            printf("b");
-        else
+int main() {
+    int c, state;
+
+    state = OUT;
+
+    while((c = getchar()) != EOF){
+        if (c != ' ' && c != '\n' && '\t'){
+            state = IN;
             putchar(c);
+        }
+        else if ( state == IN ) {
+            state = OUT;
+            putchar('\n');
+        }
     }
-    return 0;
 }
