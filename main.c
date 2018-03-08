@@ -1,7 +1,7 @@
 #include <stdio.h>
-#define LOWER 0;
-#define UPPER 200;
-#define STEP 20;
+#define LOWER 0
+#define UPPER 200
+#define STEP 20
 
 int convertFahrToCelsius(int fahr);
 
@@ -9,16 +9,11 @@ int convertFahrToCelsius(int fahr);
 int main()
 {
 
-    int fahr, step, upper;
+    int fahr;
 
-    fahr = LOWER;
-    step = STEP;
-    upper = UPPER;
-
-    while (fahr <= upper)
+    for (fahr = LOWER; fahr <= UPPER; fahr = fahr + STEP)
     {
         printf("%d %d\n", fahr, convertFahrToCelsius(fahr));
-        fahr = fahr + step;
     }
 
     return 0;
