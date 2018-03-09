@@ -1,31 +1,72 @@
 #include <stdio.h>
-#define LOWER 0
-#define UPPER 200
-#define STEP 20
+#define MAXLINE 1000
 
-int convertFahrToCelsius(int fahr);
+
+int getLine(char line[], int maxLine);
+void copy(char to[], char from[]);
 
 
 int main()
 {
 
-    int fahr;
+    int len;
+    int max;
+    int tmp;
+    char line[MAXLINE];
+    char longest[MAXLINE];
 
-    for (fahr = LOWER; fahr <= UPPER; fahr = fahr + STEP)
+    len = 0;
+    max = 0;
+    while((tmp = getLine(line, MAXLINE)) > 0)
     {
-        printf("%d %d\n", fahr, convertFahrToCelsius(fahr));
+        len += tmp;
+        if (tmp != MAXLINE -1)
+        {
+            if (len > max)
+            {
+                max = len;
+                copy(longest, line);
+            }
+            len = 0;
+
+        }
+    }
+
+    if (max > 0)
+    {
+        printf("%s", longest);
     }
 
     return 0;
 
 }
 
-
-int convertFahrToCelsius(int fahr)
+void copy(char to[], char from[])
 {
-    int celsius;
+    int i;
 
-    celsius = 5 * (fahr - 32) / 9;
+    i = 0;
+    while((to[i] = from[i]) != '\0')
+    {
+        ++i;
+    }
+}
 
-    return celsius;
+int getLine(char line[], int maxLine)
+{
+    int c, i;
+
+    for (i = 0; i < maxLine - 1 && (c = getchar()) != EOF && c !='\n'; ++i) {
+        line[i] = c;
+
+    }
+
+    if (c == '\n')
+    {
+        line[i] = c;
+        ++i;
+    }
+    line[i] = '\0';
+
+    return i;
 }
