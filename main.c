@@ -1,20 +1,39 @@
-#include <limits.h>
+#include <string.h>
 #include <stdio.h>
 
+
+#define MAXLEN 1000
+#define NEW_LINE_MESSAGE "New line! Stop getting symbols\n"
+#define EOF_MESSAGE "End of file. Stop\n"
 
 int main()
 {
 
-    printf("Integer datatypes:\n");
-    printf("%d <= char <= %d\n", CHAR_MIN, CHAR_MAX);
-    printf("%d <= int <= %d\n", INT_MIN, INT_MAX);
-    printf("%ld <= long <= %ld\n", LONG_MIN, LONG_MAX);
-    printf("%d <= signed char <= %d\n", SCHAR_MIN, SCHAR_MAX);
-    printf("%d <= short <= %d\n", SHRT_MIN, SHRT_MAX);
-    printf("0 <= unsigned char <= %d\n", UCHAR_MAX);
-    printf("0 <= unsigned int <= %u\n", UINT_MAX);
-    printf("0 <= unsigned long <= %lu\n", ULONG_MAX);
-    printf("0 <= unsigned short <= %d\n", USHRT_MAX);
-    return 0;
+    int i = 0;
+    int c;
+    char string[MAXLEN];
+
+    while (i < MAXLEN)
+    {
+        c = getchar();
+
+        if (c == '\n')
+        {
+            printf("%s", NEW_LINE_MESSAGE);
+            break;
+        }
+        else if (c == EOF)
+        {
+            printf("%s", EOF_MESSAGE);
+            break;
+        }
+
+        string[i++] = c;
+
+    }
+    string[i] = '\0';
+
+    printf("%s", string);
+
 
 }
