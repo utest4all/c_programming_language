@@ -1,59 +1,20 @@
+#include <limits.h>
 #include <stdio.h>
-#include <string.h>
-#define MAXLINE 100
-
-
-
-char* reverse(char string[]);
-int getLine(char line[], int maxline);
 
 
 int main()
 {
-    int len;
-    char line[MAXLINE];
 
-    while((len = getLine(line, MAXLINE)) > 0)
-    {
-       printf("%s\n", line);
-       printf("%s\n", reverse(line));
-    }
-
+    printf("Integer datatypes:\n");
+    printf("%d <= char <= %d\n", CHAR_MIN, CHAR_MAX);
+    printf("%d <= int <= %d\n", INT_MIN, INT_MAX);
+    printf("%ld <= long <= %ld\n", LONG_MIN, LONG_MAX);
+    printf("%d <= signed char <= %d\n", SCHAR_MIN, SCHAR_MAX);
+    printf("%d <= short <= %d\n", SHRT_MIN, SHRT_MAX);
+    printf("0 <= unsigned char <= %d\n", UCHAR_MAX);
+    printf("0 <= unsigned int <= %u\n", UINT_MAX);
+    printf("0 <= unsigned long <= %lu\n", ULONG_MAX);
+    printf("0 <= unsigned short <= %d\n", USHRT_MAX);
     return 0;
 
-}
-
-
-char* reverse(char line[])
-{
-    int i, j;
-    char tmp;
-
-    for (i = 0, j = strlen(line) -1; i < j; ++i, --j)
-    {
-        tmp = line[i];
-        line[i] = line[j];
-        line[j] = tmp;
-    }
-
-    return line;
-}
-
-int getLine(char line[], int maxLine)
-{
-    int c, i;
-
-    for (i = 0; i < maxLine - 1 && (c = getchar()) != EOF && c !='\n'; ++i) {
-        line[i] = c;
-
-    }
-
-    if (c == '\n')
-    {
-        line[i] = c;
-        ++i;
-    }
-    line[i] = '\0';
-
-    return i;
 }
